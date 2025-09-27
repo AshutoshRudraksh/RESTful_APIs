@@ -1,0 +1,17 @@
+{
+  "name": "restful_apis",
+  "version": "1.0.0",
+  "description": "Building RESTful / REST(Representational State Transfer) API's from scratch with Node.js Express, learned how to build at large scale and what is middleware ? How API gateways functions?",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
