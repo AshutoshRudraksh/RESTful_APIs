@@ -5,16 +5,16 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 // Import middleware
-const authMiddleware = require('./middleware/auth');
-const rateLimitMiddleware = require('./middleware/rateLimit');
-const loggingMiddleware = require('./middleware/logging');
-const errorHandlerMiddleware = require('./middleware/errorHandler');
-const validationMiddleware = require('./middleware/validation');
+const { authMiddleware } = require('./middleware/auth');
+const { generalLimiter } = require('./middleware/rateLimit');
+const { loggingMiddleware } = require('./middleware/logging');
+const { errorHandlerMiddleware } = require('./middleware/errorHandler');
+const { sanitizeInput } = require('./middleware/validation');
 
 // Import routes
-const userRoutes = require('./routes/users');
-const productRoutes = require('./routes/products');
-const orderRoutes = require('./routes/orders');
+const { router: userRoutes } = require('./routes/users');
+const { router: productRoutes } = require('./routes/products');
+const { router: orderRoutes } = require('./routes/orders');
 
 class RESTfulServer {
     constructor() {
@@ -44,7 +44,10 @@ class RESTfulServer {
         this.app.use(express.urlencoded({ extended: true }));
 
         // Rate limiting middleware
-        this.app.use(rateLimitMiddleware);
+        this.app.use(generalLimiter);
+        
+        // Input sanitization middleware
+        this.app.use(sanitizeInput);
 
         // Custom middleware demonstration
         this.app.use((req, res, next) => {
