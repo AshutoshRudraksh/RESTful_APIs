@@ -60,3 +60,8 @@ app.listen(
 	PORT,
 	() => console.log(`Server is running on port ${PORT}, and is alive on http://localhost:${PORT}`)
 )
+
+
+// PS:  use swaggerhub.com to document the API to understand
+// app.swaggerhub.com
+// https://swagger.io/tools/swaggerhub/	
