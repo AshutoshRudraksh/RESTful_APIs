@@ -1,0 +1,46 @@
+{
+  "name": "restful-apis-comprehensive",
+  "version": "1.0.0",
+  "description": "A comprehensive REST API project demonstrating middleware concepts and API gateway functionality",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "gateway": "node src/api-gateway/gateway.js",
+    "services": "concurrently \"node src/microservices/user-service.js\" \"node src/microservices/product-service.js\" \"node src/microservices/order-service.js\"",
+    "test": "jest",
+    "lint": "eslint src/**/*.js",
+    "dev:full": "concurrently \"npm run services\" \"npm run gateway\" \"npm run dev\""
+  },
+  "keywords": [
+    "rest-api",
+    "express",
+    "middleware",
+    "api-gateway",
+    "microservices",
+    "nodejs"
+  ],
+  "author": "REST API Learning Project",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "express-rate-limit": "^6.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "joi": "^17.9.2",
+    "http-proxy-middleware": "^2.0.6",
+    "axios": "^1.5.0",
+    "uuid": "^9.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "concurrently": "^8.2.0",
+    "jest": "^29.6.2",
+    "supertest": "^6.3.3",
+    "eslint": "^8.45.0"
+  }
+}
